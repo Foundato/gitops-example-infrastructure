@@ -4,7 +4,7 @@ kind: Kustomization
 bases:
 - ../../base
 
-namespace: sealed-secret-system
+namespace: sealed-secrets-system
 
 configMapGenerator:
 - name: sealed-secrets-values

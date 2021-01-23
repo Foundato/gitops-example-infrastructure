@@ -1,0 +1,30 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: traefik
+  namespace: routing-system
+spec:
+  interval: 1m
+  url: https://helm.traefik.io/traefik
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: traefik
+  namespace: routing-system
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: traefik
+      version: '9.12.3'
+      sourceRef:
+        kind: HelmRepository #<HelmRepository|GitRepository|Bucket>
+        name: traefik
+        namespace: routing-system
+      interval: 1m
+  valuesFrom:
+  - kind: ConfigMap
+    name: traefik-values
+    valuesKey: values.yaml
+

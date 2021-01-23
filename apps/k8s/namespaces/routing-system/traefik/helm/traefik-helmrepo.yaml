@@ -1,8 +1,0 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta1
-kind: HelmRepository
-metadata:
-  name: traefik
-  namespace: routing-system
-spec:
-  interval: 1m
-  url: https://helm.traefik.io/traefik
